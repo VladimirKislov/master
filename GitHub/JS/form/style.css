@@ -1,0 +1,62 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.input {
+  padding-left: 10px;
+  width: 250px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 100px;
+  border-radius: 15px;
+  border: 2px solid blue;
+  color: #fff;
+  background-color: darkorange;
+  cursor: pointer;
+}
+
+th {
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+th:hover {
+  background-color: violet;
+}
+
+table, th, td {
+  border: 1px solid #333;
+}
+
+th, td {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.error {
+  margin-bottom: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+
+.form__search {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input::placeholder {
+  color: indigo;
+}

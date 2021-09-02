@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: forestgreen;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 590px;
+}
+
+.card {
+  flex: 1 0 15%;
+  margin: 15px;
+  padding-top: 15px;
+  width: 100px;
+  height: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 0;
+  color: black;
+  background-color: yellow;
+  text-align: center;
+}
+
+.show {
+  font-size: 40px;
+  pointer-events: none;
+}
+
+.active {
+  font-size: 40px;
+}
+
+.game__over {
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
+  font-size: 40px;
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+h1,p {
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.input {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.btn__start {
+  margin: 0 auto;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-size: 40px;
+  color: black;
+  background-color: blue;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
