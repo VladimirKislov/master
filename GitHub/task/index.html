@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="wrapper__garage">
+      <p class="garage__email"></p>
+      <p class="garage__name"></p>
+      <p class="garage__owner"></p>
+    </div>
+
+    <div class="wrapper__info">
+
+      <h1 class="info__title"></h1>
+      <p class="info__description"></p>
+      <div class="info__original">
+        <p class="make"></p>
+        <p class="model"></p>
+        <div class="car-options">
+          <h2 class="car-options__info">варианты автомобиля</h2>
+          <p class="car-options__title"></p>
+          <p class="code"></p>
+        </div>
+      </div>
+
+      <div class="info__key-values">
+        <p class="fuel-type"></p>
+        <p class="gear-box"></p>
+        <p class="trimLevel"></p>
+      </div>
+
+      <button class="btn__edit">Edit</button>
+
+      <div class="modal">
+        <div class="form__container" >
+          <form action="#" class="form">
+            <h2 class="form__title">Владелец</h2>
+            <input class="input__email" type="text" placeholder="Email">
+            <input class="input__name" type="text" placeholder="Name">
+            <input class="input__owner" type="text" placeholder="Owner">
+            <button class="btn__save">Сохранить</button>
+            <img class="close" src="x.png" alt="x">
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
