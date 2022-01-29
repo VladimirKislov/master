@@ -72,12 +72,91 @@ document.addEventListener('DOMContentLoaded', function () {
     return arr;
   }
 
+  let timeGameOver;
+
   btnStart.addEventListener('click', shuffle);
   btnStart.addEventListener('click', function () {
     const form = document.querySelector('.form');
+    const score = document.querySelector('.score');
     form.classList.add('hidden');
+    container.classList.remove('hidden');
+    score.classList.remove('hidden');
+    timeGameOver = setTimeout(() => {
+      let gameOver = confirm('game over???');
+      alert(gameOver);
+      if (gameOver) {
+        location.reload();
+      }
+    }, 60000);
     openCard();
+    timer();
+    level();
+    animationClickCard();
   })
+
+  let time = 59;
+  let timeScoreTimeout;
+  function timer() {
+    document.querySelector('.score__timer').innerHTML = `timer: ${time}`;
+    time--;
+    if (time === 0) {
+      time = 0;
+    } else {
+      timeScoreTimeout = setTimeout(timer, 1000);
+    }
+    for (let i of container.childNodes) {
+      if (i.classList.value === "game__over") {
+        clearTimeout(timeScoreTimeout);
+        clearTimeout(timeGameOver);
+      }
+    }
+    scorePoints();
+  }
+
+  function level() {
+    let f = checkInputValue();
+    if (f == 2 || f == 4) {
+      document.querySelector('.score__level').innerHTML = 'level: easy';
+    } else if (f == 6 || f == 8) {
+      document.querySelector('.score__level').innerHTML = 'level: middle';
+    } else if (f == 10) {
+      document.querySelector('.score__level').innerHTML = 'level: hard';
+    }
+  }
+
+  let scoreId = 0;
+  function scorePoints() {
+    for (let i of container.childNodes) {
+      if (i.classList.value === "game__over") {
+        if (time >= 40) {
+          scoreId += 100;
+        } else if (time >= 30) {
+          scoreId += 80;
+        } else if (time >= 20) {
+          scoreId += 60;
+        } else if (time >= 10) {
+          scoreId += 40;
+        } else if (time >= 0) {
+          scoreId += 20;
+        }
+      }
+    }
+    document.querySelector('.score__points').innerHTML = `score: ${scoreId}`;
+  }
+
+  function scorePointsOpenCard() {
+    scoreId += 5;
+    document.querySelector('.score__points').innerHTML = `score: ${scoreId}`;
+  }
+
+  function animationClickCard() {
+    let card = document.querySelectorAll('.card');
+    card.forEach((item) => {
+      item.addEventListener('click', (elem) => {
+        elem.target.style.animation = ".4s click-card";
+      });
+    })
+  }
 
   let newArr = [];
   let stopArr = [];
@@ -86,19 +165,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let dataCard = document.querySelectorAll('[data-id]');
 
     if (newArr[0] != newArr[1]) {
-      console.log('Не угадал, :(');
       for (let i of dataCard) {
         i.classList.remove('show');
         newArr = [];
         i.removeAttribute('data-id');
       }
     } else {
-      console.log('Повезло, :)');
-
       for (let s of dataCard) {
         s.classList.add('active');
         s.removeAttribute('data-id');
         stopArr.push(s);
+        scorePointsOpenCard();
       }
       newArr = [];
       openCard();
@@ -118,10 +195,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (newArr.length == 2) {
-        console.log('открыто две карты');
-        setTimeout(check, 500);
+      setTimeout(check, 200);
     }
-
   }
 
   function openCard() {
@@ -136,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function createLink() {
     let link = document.createElement('a');
     link.classList.add('game__over');
-    link.textContent = 'Сыграть еще раз!';
+    link.textContent = 'Repeat the Game!';
     container.append(link);
 
     return link;
@@ -144,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function gameOver() {
     if (stopArr.length == obj.length) {
-      console.log('конец игры');
       createLink();
       returnStart();
     }
@@ -155,12 +229,5 @@ document.addEventListener('DOMContentLoaded', function () {
       location.reload();
     })
   }
-  setTimeout(() => {
-    let gameOver = confirm('game over???');
-    alert(gameOver);
-    if (gameOver) {
-      location.reload();
-    }
-  }, 60000);
 
 });

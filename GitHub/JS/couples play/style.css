@@ -6,15 +6,34 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: forestgreen;
+  padding: 100px;
+  background-image: url(../image/57.jpg);
+}
+
+.title {
+  font-family: 'Lobster', cursive;
+  font-size: 52px;
+}
+
+.text {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 32px;
 }
 
 .container {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 30px;
   max-width: 590px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: linear-gradient(45deg, rgb(147, 87, 245), rgb(9, 234, 212) 65%);
+  box-shadow: 8px 8px 8px 0 rgba(34, 60, 80, .7);
 }
 
 .card {
@@ -23,22 +42,23 @@ body {
   padding-top: 15px;
   width: 100px;
   height: 100px;
-  height: 100px;
-  border: 2px solid black;
+  border: 2px solid #eee;
   border-radius: 20px;
   font-size: 0;
-  color: black;
-  background-color: yellow;
+  color: #fff;
+  background-color: #554a4a;
   text-align: center;
+  cursor: pointer;
 }
 
 .show {
-  font-size: 40px;
+  font-size: 57px;
   pointer-events: none;
 }
 
 .active {
-  font-size: 40px;
+  font-size: 57px;
+  animation: .4s open-card;
 }
 
 .game__over {
@@ -47,8 +67,9 @@ body {
   padding: 10px;
   border-radius: 20px;
   border: 2px solid black;
+  font-family: 'Architects Daughter', cursive;
   font-size: 40px;
-  background-color: blueviolet;
+  background-color: #b871cc;
   cursor: pointer;
 }
 
@@ -69,19 +90,64 @@ h1 {
 .input {
   margin: 0 auto;
   margin-bottom: 50px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #d7d5d3;
 }
 
 .btn__start {
+  width: 150px;
   margin: 0 auto;
-  padding: 10px;
-  border: 2px solid black;
+  padding: 5px;
+  border: 2px solid #444;
   border-radius: 15px;
-  font-size: 40px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 28px;
   color: black;
-  background-color: blue;
+  background-color: #2088cc;
+  text-align: center;
   cursor: pointer;
+}
+
+.score {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 250px;
+  padding: 30px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #ad2d2d, #0000ff);
+}
+
+.score__title {
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+}
+
+.score__timer,
+.score__level,
+.score__points {
+  margin-bottom: 10px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 26px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .hidden {
   display: none;
+}
+
+@keyframes click-card {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
